@@ -1,0 +1,23 @@
+PODS:
+  - TomTomOnlineSDKMaps (2.0.3):
+    - TomTomOnlineUtils (= 2.0.3)
+  - TomTomOnlineSDKRouting (2.0.3):
+    - TomTomOnlineUtils (= 2.0.3)
+  - TomTomOnlineSDKSearch (2.0.3):
+    - TomTomOnlineUtils (= 2.0.3)
+  - TomTomOnlineUtils (2.0.3)
+
+DEPENDENCIES:
+  - TomTomOnlineSDKMaps
+  - TomTomOnlineSDKRouting
+  - TomTomOnlineSDKSearch
+
+SPEC CHECKSUMS:
+  TomTomOnlineSDKMaps: 692f967f5e9ea2243e8f8eb969c9917148469b91
+  TomTomOnlineSDKRouting: 6cf7be2b79a1f342ec05d86d98a5ab806b3f0200
+  TomTomOnlineSDKSearch: d25de240d6c8f30f6b5a1a8039e9476d6d3b9072
+  TomTomOnlineUtils: 188d276af08ca071806379d5d28858d54560d55f
+
+PODFILE CHECKSUM: 9d3559477b86df2bcb0aa1c392e3d9b45ab26272
+
+COCOAPODS: 1.2.0
