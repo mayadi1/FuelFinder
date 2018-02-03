@@ -7,6 +7,10 @@
 //
 
 import UIKit
+import TomTomOnlineSDKMaps
+import TomTomOnlineUtils
+import TomTomOnlineSDKRouting
+
 
 class MapController: UIViewController, UISearchBarDelegate {
     
@@ -35,12 +39,19 @@ class MapController: UIViewController, UISearchBarDelegate {
         tf.placeholder = "Where to go?"
         return tf
     }()
-
+    
+    let mapView: TTMapView = {
+        let view = TTMapView()
+        return view
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         self.navigationController?.navigationBar.isHidden = true
+        
+        view.addSubview(mapView)
+        mapView.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
         
         view.addSubview(backButton)
         backButton.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: nil, right: nil, paddingTop: 18, paddingLeft: 2, paddingBottom: 0, paddingRight: 0, width: 40, height: 40)
@@ -50,6 +61,12 @@ class MapController: UIViewController, UISearchBarDelegate {
         
         view.addSubview(searchbarTextField)
         searchbarTextField.anchor(top: searchBarContainerView.topAnchor, left: searchBarContainerView.leftAnchor, bottom: searchBarContainerView.bottomAnchor, right: searchBarContainerView.rightAnchor, paddingTop: 0, paddingLeft: 15, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
+        
+        requestLocation()
+        
+    }
+    
+    func requestLocation() {
         
     }
     
