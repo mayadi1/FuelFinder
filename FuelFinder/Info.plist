@@ -2,6 +2,14 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>OnlineTraffic.key</key>
+	<string>YiGugE3kh0N4LF7vZVyFcKijaooj5IvA</string>
+	<key>OnlineSearch.key</key>
+	<string>YiGugE3kh0N4LF7vZVyFcKijaooj5IvA</string>
+	<key>OnlineRouting.key</key>
+	<string>YiGugE3kh0N4LF7vZVyFcKijaooj5IvA</string>
+	<key>OnlineMap.key</key>
+	<string>YiGugE3kh0N4LF7vZVyFcKijaooj5IvA</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleExecutable</key>

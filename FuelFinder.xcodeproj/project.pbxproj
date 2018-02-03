@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		19D92E74C9621D6AE3829A87 /* Pods_FuelFinder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39F4965F01A7957AD9F9751F /* Pods_FuelFinder.framework */; };
 		3C7FBB3020265E22001DD4F7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C7FBB2F20265E22001DD4F7 /* AppDelegate.swift */; };
 		3C7FBB3220265E22001DD4F7 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C7FBB3120265E22001DD4F7 /* HomeController.swift */; };
 		3C7FBB3520265E22001DD4F7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C7FBB3320265E22001DD4F7 /* Main.storyboard */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		39F4965F01A7957AD9F9751F /* Pods_FuelFinder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FuelFinder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C7FBB2C20265E22001DD4F7 /* FuelFinder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FuelFinder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C7FBB2F20265E22001DD4F7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3C7FBB3120265E22001DD4F7 /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
@@ -26,6 +28,8 @@
 		3C7FBB3B20265E22001DD4F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3C7FBB4120265FAE001DD4F7 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		3C7FBB4320266099001DD4F7 /* MapController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapController.swift; sourceTree = "<group>"; };
+		61D5157E359112CD7D47F378 /* Pods-FuelFinder.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FuelFinder.release.xcconfig"; path = "Pods/Target Support Files/Pods-FuelFinder/Pods-FuelFinder.release.xcconfig"; sourceTree = "<group>"; };
+		7DB3DCD87BD9332FD977D091 /* Pods-FuelFinder.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FuelFinder.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FuelFinder/Pods-FuelFinder.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,6 +37,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				19D92E74C9621D6AE3829A87 /* Pods_FuelFinder.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -44,6 +49,8 @@
 			children = (
 				3C7FBB2E20265E22001DD4F7 /* FuelFinder */,
 				3C7FBB2D20265E22001DD4F7 /* Products */,
+				938089AE6720864A054282B0 /* Pods */,
+				3ED82CA93109DF7FD367DDF3 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -70,6 +77,23 @@
 			path = FuelFinder;
 			sourceTree = "<group>";
 		};
+		3ED82CA93109DF7FD367DDF3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				39F4965F01A7957AD9F9751F /* Pods_FuelFinder.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		938089AE6720864A054282B0 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				7DB3DCD87BD9332FD977D091 /* Pods-FuelFinder.debug.xcconfig */,
+				61D5157E359112CD7D47F378 /* Pods-FuelFinder.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -77,9 +101,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3C7FBB3E20265E22001DD4F7 /* Build configuration list for PBXNativeTarget "FuelFinder" */;
 			buildPhases = (
+				00D550CC0A6EA6AA565B834A /* [CP] Check Pods Manifest.lock */,
 				3C7FBB2820265E22001DD4F7 /* Sources */,
 				3C7FBB2920265E22001DD4F7 /* Frameworks */,
 				3C7FBB2A20265E22001DD4F7 /* Resources */,
+				7D255098BCECA12A563E7B86 /* [CP] Embed Pods Frameworks */,
+				A6B8044CC85044BB1D85F949 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -136,6 +163,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		00D550CC0A6EA6AA565B834A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		7D255098BCECA12A563E7B86 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FuelFinder/Pods-FuelFinder-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A6B8044CC85044BB1D85F949 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FuelFinder/Pods-FuelFinder-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		3C7FBB2820265E22001DD4F7 /* Sources */ = {
@@ -280,13 +355,15 @@
 		};
 		3C7FBB3F20265E22001DD4F7 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7DB3DCD87BD9332FD977D091 /* Pods-FuelFinder.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = VE72S7JG28;
+				DEVELOPMENT_TEAM = PE9MW7PNB5;
 				INFOPLIST_FILE = FuelFinder/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.Hyeongjin.FuelFinder;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ayadios.FuelFinder;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -295,13 +372,15 @@
 		};
 		3C7FBB4020265E22001DD4F7 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 61D5157E359112CD7D47F378 /* Pods-FuelFinder.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = VE72S7JG28;
+				DEVELOPMENT_TEAM = PE9MW7PNB5;
 				INFOPLIST_FILE = FuelFinder/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.Hyeongjin.FuelFinder;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ayadios.FuelFinder;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
