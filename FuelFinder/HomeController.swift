@@ -36,11 +36,6 @@ class HomeController: UIViewController {
         fuelButton.anchor(top: view.centerYAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: -40, paddingLeft: 40, paddingBottom: 0, paddingRight: -40, width: 0, height: 50)
         
           electricityButton.anchor(top: fuelButton.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 10, paddingLeft: 40, paddingBottom: 0, paddingRight: -40, width: 0, height: 50)
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        self.navigationController?.navigationBar.isHidden = true
         
         //check if user is already selected fuel
         if UserDefaults.standard.bool(forKey: "isFuel") != nil {
@@ -49,7 +44,12 @@ class HomeController: UIViewController {
             self.navigationController?.pushViewController(mapController, animated: false)
         }
 
-        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.navigationBar.isHidden = true
+
     }
     
     override func viewWillDisappear(_ animated: Bool) {
