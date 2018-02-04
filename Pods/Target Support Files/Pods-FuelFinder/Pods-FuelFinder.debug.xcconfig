@@ -1,12 +1,11 @@
 ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES
-FRAMEWORK_SEARCH_PATHS = $(inherited) "$PODS_CONFIGURATION_BUILD_DIR/DropDown" "${PODS_ROOT}/TomTomOnlineSDKMaps/TomTomOnlineSDKMaps" "${PODS_ROOT}/TomTomOnlineUtils/TomTomOnlineUtils" "${PODS_ROOT}/TomTomOnlineSDKRouting/TomTomOnlineSDKRouting" "${PODS_ROOT}/TomTomOnlineSDKSearch/TomTomOnlineSDKSearch"
+FRAMEWORK_SEARCH_PATHS = $(inherited) "$PODS_CONFIGURATION_BUILD_DIR/DropDown" "${PODS_ROOT}/TomTomOnlineSDKMaps/TomTomOnlineSDKMaps" "${PODS_ROOT}/TomTomOnlineUtils/TomTomOnlineUtils" "${PODS_ROOT}/TomTomOnlineSDKRouting/TomTomOnlineSDKRouting"
 GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
-HEADER_SEARCH_PATHS = $(inherited) "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/TomTomOnlineSDKMaps" "${PODS_ROOT}/Headers/Public/TomTomOnlineSDKRouting" "${PODS_ROOT}/Headers/Public/TomTomOnlineSDKSearch" "${PODS_ROOT}/Headers/Public/TomTomOnlineUtils"
+HEADER_SEARCH_PATHS = $(inherited) "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/TomTomOnlineSDKMaps" "${PODS_ROOT}/Headers/Public/TomTomOnlineSDKRouting" "${PODS_ROOT}/Headers/Public/TomTomOnlineUtils"
 LD_RUNPATH_SEARCH_PATHS = $(inherited) '@executable_path/Frameworks' '@loader_path/Frameworks'
-OTHER_CFLAGS = $(inherited) -iquote "$PODS_CONFIGURATION_BUILD_DIR/DropDown/DropDown.framework/Headers" -isystem "${PODS_ROOT}/Headers/Public" -isystem "${PODS_ROOT}/Headers/Public/TomTomOnlineSDKMaps" -isystem "${PODS_ROOT}/Headers/Public/TomTomOnlineSDKRouting" -isystem "${PODS_ROOT}/Headers/Public/TomTomOnlineSDKSearch" -isystem "${PODS_ROOT}/Headers/Public/TomTomOnlineUtils"
-OTHER_LDFLAGS = $(inherited) -framework "CoreGraphics" -framework "CoreLocation" -framework "CoreText" -framework "DropDown" -framework "Foundation" -framework "OpenGLES" -framework "QuartzCore" -framework "TomTomOnlineSDKMaps" -framework "TomTomOnlineSDKRouting" -framework "TomTomOnlineSDKSearch" -framework "TomTomOnlineUtils" -framework "UIKit"
+OTHER_CFLAGS = $(inherited) -iquote "$PODS_CONFIGURATION_BUILD_DIR/DropDown/DropDown.framework/Headers" -isystem "${PODS_ROOT}/Headers/Public" -isystem "${PODS_ROOT}/Headers/Public/TomTomOnlineSDKMaps" -isystem "${PODS_ROOT}/Headers/Public/TomTomOnlineSDKRouting" -isystem "${PODS_ROOT}/Headers/Public/TomTomOnlineUtils"
+OTHER_LDFLAGS = $(inherited) -framework "CoreGraphics" -framework "CoreLocation" -framework "CoreText" -framework "DropDown" -framework "Foundation" -framework "OpenGLES" -framework "QuartzCore" -framework "TomTomOnlineSDKMaps" -framework "TomTomOnlineSDKRouting" -framework "TomTomOnlineUtils" -framework "UIKit"
 OTHER_SWIFT_FLAGS = $(inherited) "-D" "COCOAPODS"
 PODS_BUILD_DIR = $BUILD_DIR
 PODS_CONFIGURATION_BUILD_DIR = $PODS_BUILD_DIR/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)
-PODS_PODFILE_DIR_PATH = ${SRCROOT}/.
 PODS_ROOT = ${SRCROOT}/Pods

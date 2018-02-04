@@ -10,7 +10,7 @@ import UIKit
 import TomTomOnlineSDKMaps
 import TomTomOnlineSDKRouting
 import DropDown
-
+import MapKit
 
 class MapController: UIViewController, UISearchBarDelegate, CLLocationManagerDelegate, TTMapViewDelegate, UITextFieldDelegate {
     
@@ -18,6 +18,8 @@ class MapController: UIViewController, UISearchBarDelegate, CLLocationManagerDel
     var searchbarResult = ""
     let dropDown = DropDown()
     let dropdownView = UIView()
+    let completer = MKLocalSearchCompleter()
+    let resultAddresses = [String]()
     
     let backButton: UIButton = {
         let button = UIButton(type: .system)
@@ -55,7 +57,7 @@ class MapController: UIViewController, UISearchBarDelegate, CLLocationManagerDel
         
         setUpLocationManager()
         setUpMapView()
-        
+
         view.backgroundColor = .white
         self.navigationController?.navigationBar.isHidden = true
         
@@ -90,7 +92,7 @@ class MapController: UIViewController, UISearchBarDelegate, CLLocationManagerDel
         dropDown.shadowColor = .clear
         dropDown.isOpaque = true
         
-        dropDown.dataSource = ["Car", "Motorcycle", "Truck"]
+        dropDown.dataSource = resultAddresses
         
     }
     func setUpMapView(){
@@ -135,6 +137,10 @@ class MapController: UIViewController, UISearchBarDelegate, CLLocationManagerDel
             currentText = currentText + string
             searchbarResult = currentText
             print(searchbarResult)
+            
+            completer.delegate = self
+            completer.region = MKCoordinateRegionMakeWithDistance((locationManager.location?.coordinate)!, 10_000, 10_000)
+            completer.queryFragment = searchbarResult
             if currentText.count == 0 {
                 searchbarResult = ""
             }
@@ -165,6 +171,8 @@ class MapController: UIViewController, UISearchBarDelegate, CLLocationManagerDel
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let location = locations.last! as CLLocation
         print(location)
+        locationManager.stopUpdatingHeading()
+        locationManager.stopUpdatingLocation()
     }
     
     func performAutocompleteSearch(withQuery query: String) {
@@ -175,3 +183,14 @@ class MapController: UIViewController, UISearchBarDelegate, CLLocationManagerDel
     
 }
 
+extension MapController: MKLocalSearchCompleterDelegate {
+    
+    func completerDidUpdateResults(_ completer: MKLocalSearchCompleter) {
+        let addresses = completer.results.map { result in
+            result.title + ", " + result.subtitle
+        }
+        dropDown.dataSource = addresses
+        
+    }
+    
+}
