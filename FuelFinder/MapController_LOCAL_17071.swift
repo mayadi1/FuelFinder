@@ -8,16 +8,13 @@
 
 import UIKit
 import TomTomOnlineSDKMaps
+import TomTomOnlineUtils
 import TomTomOnlineSDKRouting
 import DropDown
 
-
-class MapController: UIViewController, UISearchBarDelegate, CLLocationManagerDelegate, TTMapViewDelegate, UITextFieldDelegate {
+class MapController: UIViewController, UISearchBarDelegate, UITextFieldDelegate {
     
-    let locationManager = CLLocationManager()
     var searchbarResult = ""
-    let dropDown = DropDown()
-    let dropdownView = UIView()
     
     let backButton: UIButton = {
         let button = UIButton(type: .system)
@@ -49,13 +46,9 @@ class MapController: UIViewController, UISearchBarDelegate, CLLocationManagerDel
         let view = TTMapView()
         return view
     }()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        setUpLocationManager()
-        setUpMapView()
-        
         view.backgroundColor = .white
         self.navigationController?.navigationBar.isHidden = true
         
@@ -75,7 +68,6 @@ class MapController: UIViewController, UISearchBarDelegate, CLLocationManagerDel
         searchbarTextField.delegate = self
     
         dropdownView.backgroundColor = .clear
-
         
         view.addSubview(dropdownView)
         dropdownView.anchor(top: searchbarTextField.bottomAnchor, left: searchbarTextField.leftAnchor, bottom: searchbarTextField.bottomAnchor, right: searchbarTextField.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
@@ -83,6 +75,9 @@ class MapController: UIViewController, UISearchBarDelegate, CLLocationManagerDel
         setupDropDown()
 
     }
+    let dropDown = DropDown()
+    let dropdownView = UIView()
+
 
     func setupDropDown() {
         dropDown.anchorView = dropdownView
@@ -92,23 +87,6 @@ class MapController: UIViewController, UISearchBarDelegate, CLLocationManagerDel
         
         dropDown.dataSource = ["Car", "Motorcycle", "Truck"]
         
-    }
-    func setUpMapView(){
-        
-        mapView.center(on: (locationManager.location?.coordinate)!, withZoom: 12)
-        mapView.delegate = self
-        mapView.isShowsUserLocation = true
-        
-    }
-    
-    func setUpLocationManager() {
-        
-        self.locationManager.requestAlwaysAuthorization()
-        locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.distanceFilter = kCLDistanceFilterNone;
-        locationManager.startUpdatingLocation()
-        locationManager.startUpdatingHeading()
         
         //*** user selected a item( of drop down cells ) manually.
         dropDown.selectionAction = { [unowned self] (index: Int, item: String) in
@@ -153,25 +131,14 @@ class MapController: UIViewController, UISearchBarDelegate, CLLocationManagerDel
     
     
     private func updateUI() {
-        print("is fuel: ", isFuel!)
+        print("is fuel: ", isFuel)
     }
     
     @objc func handleBack() {
         self.navigationController?.popViewController(animated: true)
     }
     
-    
-    
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        let location = locations.last! as CLLocation
-        print(location)
-    }
-    
-    func performAutocompleteSearch(withQuery query: String) {
-        
-        
-    }
+  
     
     
 }
-

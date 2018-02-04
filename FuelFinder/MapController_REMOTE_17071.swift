@@ -9,15 +9,10 @@
 import UIKit
 import TomTomOnlineSDKMaps
 import TomTomOnlineSDKRouting
-import DropDown
 
-
-class MapController: UIViewController, UISearchBarDelegate, CLLocationManagerDelegate, TTMapViewDelegate, UITextFieldDelegate {
+class MapController: UIViewController, UISearchBarDelegate, CLLocationManagerDelegate, TTMapViewDelegate {
     
     let locationManager = CLLocationManager()
-    var searchbarResult = ""
-    let dropDown = DropDown()
-    let dropdownView = UIView()
     
     let backButton: UIButton = {
         let button = UIButton(type: .system)
@@ -68,31 +63,12 @@ class MapController: UIViewController, UISearchBarDelegate, CLLocationManagerDel
         view.addSubview(searchBarContainerView)
         searchBarContainerView.anchor(top: backButton.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 10, paddingLeft: 20, paddingBottom: 0, paddingRight: -20, width: 0, height: 40)
         
-        
         view.addSubview(searchbarTextField)
-        searchbarTextField.anchor(top: searchBarContainerView.topAnchor, left: searchBarContainerView.leftAnchor, bottom: searchBarContainerView.bottomAnchor, right: searchBarContainerView.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
+        searchbarTextField.anchor(top: searchBarContainerView.topAnchor, left: searchBarContainerView.leftAnchor, bottom: searchBarContainerView.bottomAnchor, right: searchBarContainerView.rightAnchor, paddingTop: 0, paddingLeft: 15, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
         
-        searchbarTextField.delegate = self
+        
+    }
     
-        dropdownView.backgroundColor = .clear
-
-        
-        view.addSubview(dropdownView)
-        dropdownView.anchor(top: searchbarTextField.bottomAnchor, left: searchbarTextField.leftAnchor, bottom: searchbarTextField.bottomAnchor, right: searchbarTextField.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
-        
-        setupDropDown()
-
-    }
-
-    func setupDropDown() {
-        dropDown.anchorView = dropdownView
-        dropDown.backgroundColor = UIColor(white: 1, alpha: 0.5)
-        dropDown.shadowColor = .clear
-        dropDown.isOpaque = true
-        
-        dropDown.dataSource = ["Car", "Motorcycle", "Truck"]
-        
-    }
     func setUpMapView(){
         
         mapView.center(on: (locationManager.location?.coordinate)!, withZoom: 12)
@@ -110,47 +86,7 @@ class MapController: UIViewController, UISearchBarDelegate, CLLocationManagerDel
         locationManager.startUpdatingLocation()
         locationManager.startUpdatingHeading()
         
-        //*** user selected a item( of drop down cells ) manually.
-        dropDown.selectionAction = { [unowned self] (index: Int, item: String) in
-                    print("Selected item: \(item) at index: \(index)")
-        }
     }
-    
-    
-    
-   
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        dropDown.hide()
-    }
-    
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        print("begin editing")
-        dropDown.show()
-    }
-    
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        dropDown.show()
-        if var currentText = searchbarTextField.text {
-            currentText = currentText + string
-            searchbarResult = currentText
-            print(searchbarResult)
-            if currentText.count == 0 {
-                searchbarResult = ""
-            }
-        }
-        return true
-    }
-    
-    
-    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
-        return true
-    }
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        return true
-    }
-    
-    
     
     private func updateUI() {
         print("is fuel: ", isFuel!)

@@ -7,7 +7,6 @@ target 'FuelFinder' do
 
   # Pods for FuelFinder
 pod 'TomTomOnlineSDKMaps'
-pod 'TomTomOnlineSDKSearch'
 pod 'TomTomOnlineSDKRouting'
 pod 'DropDown'
 

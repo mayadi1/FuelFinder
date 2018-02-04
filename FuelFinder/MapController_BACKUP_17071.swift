@@ -11,13 +11,15 @@ import TomTomOnlineSDKMaps
 import TomTomOnlineSDKRouting
 import DropDown
 
-
-class MapController: UIViewController, UISearchBarDelegate, CLLocationManagerDelegate, TTMapViewDelegate, UITextFieldDelegate {
+<<<<<<< HEAD
+class MapController: UIViewController, UISearchBarDelegate, UITextFieldDelegate {
+    
+    var searchbarResult = ""
+=======
+class MapController: UIViewController, UISearchBarDelegate, CLLocationManagerDelegate, TTMapViewDelegate {
     
     let locationManager = CLLocationManager()
-    var searchbarResult = ""
-    let dropDown = DropDown()
-    let dropdownView = UIView()
+>>>>>>> 6af2cce0e306d05c4ea08e572a33f49463bb2d50
     
     let backButton: UIButton = {
         let button = UIButton(type: .system)
@@ -72,10 +74,12 @@ class MapController: UIViewController, UISearchBarDelegate, CLLocationManagerDel
         view.addSubview(searchbarTextField)
         searchbarTextField.anchor(top: searchBarContainerView.topAnchor, left: searchBarContainerView.leftAnchor, bottom: searchBarContainerView.bottomAnchor, right: searchBarContainerView.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
         
+<<<<<<< HEAD
         searchbarTextField.delegate = self
     
         dropdownView.backgroundColor = .clear
-
+=======
+>>>>>>> 6af2cce0e306d05c4ea08e572a33f49463bb2d50
         
         view.addSubview(dropdownView)
         dropdownView.anchor(top: searchbarTextField.bottomAnchor, left: searchbarTextField.leftAnchor, bottom: searchbarTextField.bottomAnchor, right: searchbarTextField.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
@@ -83,6 +87,10 @@ class MapController: UIViewController, UISearchBarDelegate, CLLocationManagerDel
         setupDropDown()
 
     }
+<<<<<<< HEAD
+    let dropDown = DropDown()
+    let dropdownView = UIView()
+
 
     func setupDropDown() {
         dropDown.anchorView = dropdownView
@@ -92,7 +100,8 @@ class MapController: UIViewController, UISearchBarDelegate, CLLocationManagerDel
         
         dropDown.dataSource = ["Car", "Motorcycle", "Truck"]
         
-    }
+=======
+    
     func setUpMapView(){
         
         mapView.center(on: (locationManager.location?.coordinate)!, withZoom: 12)
@@ -109,6 +118,7 @@ class MapController: UIViewController, UISearchBarDelegate, CLLocationManagerDel
         locationManager.distanceFilter = kCLDistanceFilterNone;
         locationManager.startUpdatingLocation()
         locationManager.startUpdatingHeading()
+>>>>>>> 6af2cce0e306d05c4ea08e572a33f49463bb2d50
         
         //*** user selected a item( of drop down cells ) manually.
         dropDown.selectionAction = { [unowned self] (index: Int, item: String) in
