@@ -9,5 +9,7 @@ target 'FuelFinder' do
 pod 'TomTomOnlineSDKMaps'
 pod 'TomTomOnlineSDKRouting'
 pod 'DropDown'
+ pod 'Alamofire', '~> 4.5'
+ pod 'SwiftyJSON'
 
 end

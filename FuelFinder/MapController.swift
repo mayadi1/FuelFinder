@@ -5,12 +5,13 @@
 //  Created by Hyeongjin Um on 2/3/18.
 //  Copyright © 2018 Hyeongjin Um. All rights reserved.
 //
-
 import UIKit
 import TomTomOnlineSDKMaps
 import TomTomOnlineSDKRouting
 import DropDown
 import MapKit
+import Alamofire
+import SwiftyJSON
 
 class MapController: UIViewController, UISearchBarDelegate, CLLocationManagerDelegate, TTMapViewDelegate, UITextFieldDelegate {
     
@@ -33,6 +34,8 @@ class MapController: UIViewController, UISearchBarDelegate, CLLocationManagerDel
             updateUI()
         }
     }
+    
+    var gasStations = [GasStation]()
     
     let searchBarContainerView: UIView = {
         let view = UIView()
@@ -57,7 +60,7 @@ class MapController: UIViewController, UISearchBarDelegate, CLLocationManagerDel
         
         setUpLocationManager()
         setUpMapView()
-
+        
         view.backgroundColor = .white
         self.navigationController?.navigationBar.isHidden = true
         
@@ -75,17 +78,23 @@ class MapController: UIViewController, UISearchBarDelegate, CLLocationManagerDel
         searchbarTextField.anchor(top: searchBarContainerView.topAnchor, left: searchBarContainerView.leftAnchor, bottom: searchBarContainerView.bottomAnchor, right: searchBarContainerView.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
         
         searchbarTextField.delegate = self
-    
+        
         dropdownView.backgroundColor = .clear
-
+        
         
         view.addSubview(dropdownView)
         dropdownView.anchor(top: searchbarTextField.bottomAnchor, left: searchbarTextField.leftAnchor, bottom: searchbarTextField.bottomAnchor, right: searchbarTextField.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
         
         setupDropDown()
-
+        
     }
-
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.requestURL()
+    }
+    
     func setupDropDown() {
         dropDown.anchorView = dropdownView
         dropDown.backgroundColor = UIColor(white: 1, alpha: 0.5)
@@ -114,13 +123,32 @@ class MapController: UIViewController, UISearchBarDelegate, CLLocationManagerDel
         
         //*** user selected a item( of drop down cells ) manually.
         dropDown.selectionAction = { [unowned self] (index: Int, item: String) in
-                    print("Selected item: \(item) at index: \(index)")
+            print("Selected item: \(item) at index: \(index)")
+            
+            
+            
         }
     }
     
+    private func requestURL() {
+        //request location data
+        let destinationURL = (NSURL(string: "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=-33.8670522,151.1957362&radius=5000&type=gas_station&keyword=gas&key=AIzaSyButRBDJrYCrFqXa6mTZU98YZUH94RRuE4")! as URL)
+            =        Alamofire.request(destinationURL).responseJSON(completionHandler: { (response) in
+                if let result = response.result.value {
+                    let json = JSON(result)
+                    let lat = json["results"][0]["geometry"]["location"]["lat"].doubleValue
+                    let lng = json["results"][0]["geometry"]["location"]["lng"].doubleValue
+                    
+                    let gasStation = GasStation(placeID: "gas", gasPrice: "price", lat: lng, lng: lat)
+                    self.gasStations.append(gasStation)
+                    
+                    print(self.gasStations.count, self.gasStations.first?.lng)
+                }
+            })
+        
+        
+    }
     
-    
-   
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         dropDown.hide()

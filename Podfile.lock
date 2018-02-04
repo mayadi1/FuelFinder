@@ -1,5 +1,7 @@
 PODS:
+  - Alamofire (4.6.0)
   - DropDown (2.3.1)
+  - SwiftyJSON (4.0.0)
   - TomTomOnlineSDKMaps (2.0.3):
     - TomTomOnlineUtils (= 2.0.3)
   - TomTomOnlineSDKRouting (2.0.3):
@@ -7,16 +9,20 @@ PODS:
   - TomTomOnlineUtils (2.0.3)
 
 DEPENDENCIES:
+  - Alamofire (~> 4.5)
   - DropDown
+  - SwiftyJSON
   - TomTomOnlineSDKMaps
   - TomTomOnlineSDKRouting
 
 SPEC CHECKSUMS:
+  Alamofire: f41a599bd63041760b26d393ec1069d9d7b917f4
   DropDown: 20499c7b2731b0d21609af924e47c7677a2be50d
+  SwiftyJSON: 070dabdcb1beb81b247c65ffa3a79dbbfb3b48aa
   TomTomOnlineSDKMaps: 692f967f5e9ea2243e8f8eb969c9917148469b91
   TomTomOnlineSDKRouting: 6cf7be2b79a1f342ec05d86d98a5ab806b3f0200
   TomTomOnlineUtils: 188d276af08ca071806379d5d28858d54560d55f
 
-PODFILE CHECKSUM: d88ccc06879d1d13ee1c4e697c4be4309c261240
+PODFILE CHECKSUM: eab73c4d6a1bab3b538b996e603a85f2cdfab698
 
 COCOAPODS: 1.2.0
