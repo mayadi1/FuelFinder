@@ -12,7 +12,9 @@ import TomTomOnlineUtils
 import TomTomOnlineSDKRouting
 
 
-class MapController: UIViewController, UISearchBarDelegate {
+class MapController: UIViewController, UISearchBarDelegate, CLLocationManagerDelegate, TTMapViewDelegate {
+    
+    let locationManager = CLLocationManager()
     
     let backButton: UIButton = {
         let button = UIButton(type: .system)
@@ -47,6 +49,10 @@ class MapController: UIViewController, UISearchBarDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setUpLocationManager()
+        setUpMapView()
+        
         view.backgroundColor = .white
         self.navigationController?.navigationBar.isHidden = true
         
@@ -62,23 +68,40 @@ class MapController: UIViewController, UISearchBarDelegate {
         view.addSubview(searchbarTextField)
         searchbarTextField.anchor(top: searchBarContainerView.topAnchor, left: searchBarContainerView.leftAnchor, bottom: searchBarContainerView.bottomAnchor, right: searchBarContainerView.rightAnchor, paddingTop: 0, paddingLeft: 15, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
         
-        requestLocation()
         
     }
     
-    func requestLocation() {
+    func setUpMapView(){
+        
+        mapView.delegate = self
+        mapView.isShowsUserLocation = true
+    
+    }
+    
+    func setUpLocationManager() {
+        
+        self.locationManager.requestAlwaysAuthorization()
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.distanceFilter = kCLDistanceFilterNone;
+        locationManager.startUpdatingLocation()
+        locationManager.startUpdatingHeading()
         
     }
     
     private func updateUI() {
-        print("is fuel: ", isFuel)
+        print("is fuel: ", isFuel!)
     }
     
     @objc func handleBack() {
         self.navigationController?.popViewController(animated: true)
     }
     
-  
     
+  
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let location = locations.last! as CLLocation
+        print(location)
+    }
     
 }
