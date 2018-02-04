@@ -8,9 +8,7 @@
 
 import UIKit
 import TomTomOnlineSDKMaps
-import TomTomOnlineUtils
 import TomTomOnlineSDKRouting
-
 
 class MapController: UIViewController, UISearchBarDelegate, CLLocationManagerDelegate, TTMapViewDelegate {
     
@@ -46,7 +44,7 @@ class MapController: UIViewController, UISearchBarDelegate, CLLocationManagerDel
         let view = TTMapView()
         return view
     }()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -73,9 +71,10 @@ class MapController: UIViewController, UISearchBarDelegate, CLLocationManagerDel
     
     func setUpMapView(){
         
+        mapView.center(on: (locationManager.location?.coordinate)!, withZoom: 12)
         mapView.delegate = self
         mapView.isShowsUserLocation = true
-    
+        
     }
     
     func setUpLocationManager() {
@@ -98,10 +97,17 @@ class MapController: UIViewController, UISearchBarDelegate, CLLocationManagerDel
     }
     
     
-  
+    
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let location = locations.last! as CLLocation
         print(location)
     }
     
+    func performAutocompleteSearch(withQuery query: String) {
+        
+        
+    }
+    
+    
 }
+
